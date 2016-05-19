@@ -104,7 +104,7 @@ import groovy.util.XmlSlurper
 def responseContent = testRunner.testCase.getTestStepByName("GetCurrencyByCountry").getPropertyValue("Response")
 
 def response = new XmlSlurper().parseText(responseContent).Body.GetCurrencyByCountryResponse.GetCurrencyByCountryResult.text()
-def country = new XmlSlurper().parseText(response).Table[0].Name
+def country = new XmlSlurper().parseText(response).Table.Name[0]
 log.info(country)
 com.eviware.soapui.SoapUI.globalProperties.setPropertyValue( "country", country.toString())
 </script></con:config></con:testStep><con:testStep type="request" name="GetGMTbyCountry" id="c070f81c-2a71-477d-b1a4-91ed6afcb393"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>countrySoap</con:interface><con:operation>GetGMTbyCountry</con:operation><con:request name="GetGMTbyCountry" id="14886623-5d3c-4168-851c-d501c4facfb5"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.webservicex.net/country.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.webserviceX.NET">
